@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 public void calc (){
         String monthString = edMonth.getText().toString();
+        String nextString = edNext.getText().toString();
         if(!TextUtils.isEmpty(monthString)) {
             degree = Float.parseFloat(monthString);
             if (degree >= 1 && degree <= 10) {
@@ -70,10 +71,11 @@ public void calc (){
                 fee = degree * 12.075f - 110.25f;
             }
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+            intent.putExtra("FEE",fee);
             startActivity(intent);
         }else {
-            if (!TextUtils.isEmpty(monthString)) {
-                degree = Float.parseFloat(monthString);
+            if (!TextUtils.isEmpty(nextString)) {
+                degree = Float.parseFloat(nextString);
                 if (degree >= 1 && degree <= 20) {
                     fee = degree * 7.35f;
                 } else if (degree >= 21 && degree <= 60) {
@@ -83,6 +85,9 @@ public void calc (){
                 } else if (degree > 100) {
                     fee = degree * 12.075f - 220.25f;
                 }
+                Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+                intent.putExtra("FEE",fee);
+                startActivity(intent);
             }
         }
 
