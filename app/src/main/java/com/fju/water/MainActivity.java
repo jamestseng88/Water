@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
 
     }
-public void calc (){
+public void calc (  ){
         String monthString = edMonth.getText().toString();
         String nextString = edNext.getText().toString();
         if(!TextUtils.isEmpty(monthString)) {
@@ -71,7 +71,7 @@ public void calc (){
                 fee = degree * 12.075f - 110.25f;
             }
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-            intent.putExtra("FEE",fee);
+            intent.putExtra(getString(R.string.extra_fee),fee);
             startActivity(intent);
         }else {
             if (!TextUtils.isEmpty(nextString)) {
